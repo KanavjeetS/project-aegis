@@ -36,12 +36,12 @@ By combining self-supervised learning with a **Vision-Language Model (VLM)**, A.
 
 ```mermaid
 graph TD
-    A[🎥 Video Feed] -->|Frames| B(V-JEPA Encoder)
-    B -->|Latent Embeddings| C{Predictor}
-    C -->|Future States| D[Physics-Aware Loss]
-    B -->|Visual Tokens| E[Q-Former]
-    E -->|Query| F[Llama 3.1 VLM]
-    F -->|Text Alert| G[📢 "Flood Levels Rising!"]
+    A["🎥 Video Feed"] -->|Frames| B("V-JEPA Encoder")
+    B -->|Latent Embeddings| C{"Predictor"}
+    C -->|Future States| D["Physics-Aware Loss"]
+    B -->|Visual Tokens| E["Q-Former"]
+    E -->|Query| F["Llama 3.1 VLM"]
+    F -->|Text Alert| G["📢 Flood Levels Rising!"]
 ```
 
 ## 🚀 Quick Start
