@@ -13,6 +13,13 @@
 
 [🚀 Live Demo](https://huggingface.co/spaces/KanavjeetS/aegis-demo) | [📄 Documentation](docs/) | [🪲 Report Bug](https://github.com/KanavjeetS/project-aegis/issues)
 
+## 📺 Project Walkthrough
+
+[![Watch the Video](https://img.shields.io/badge/Watch_Project_Video-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](docs/assets/aegis_demo_video.mp4)
+
+> **[Click here to watch the full explanation video](docs/assets/aegis_demo_video.mp4)**  
+> *A detailed walkthrough of the A.E.G.I.S. architecture and capability demonstration.*
+
 </div>
 
 ---
