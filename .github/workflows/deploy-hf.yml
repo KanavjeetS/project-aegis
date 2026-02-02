@@ -1,0 +1,42 @@
+name: Deploy to HuggingFace Spaces
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'demo/**'
+      - 'models/**'
+      - '.github/workflows/deploy-hf.yml'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        lfs: true
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    
+    - name: Install dependencies
+      run: |
+        pip install huggingface_hub gradio
+    
+    - name: Deploy to Spaces
+      env:
+        HF_TOKEN: ${{ secrets.HF_TOKEN }}
+      run: |
+        python -c "
+        from huggingface_hub import HfApi
+        api = HfApi()
+        api.upload_folder(
+            folder_path='.',
+            repo_id='kanavjeets/project-aegis-demo',
+            repo_type='space',
+            token='$HF_TOKEN'
+        )
+        "
