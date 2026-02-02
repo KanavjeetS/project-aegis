@@ -53,13 +53,16 @@ class DisasterVideoDownloader:
                 videos = []
                 if 'entries' in info:
                     for entry in info['entries']:
-                        videos.append({
-                            'id': entry.get('id'),
-                            'title': entry.get('title'),
-                            'duration': entry.get('duration'),
-                            'url': entry.get('webpage_url'),
-                            'description': entry.get('description', '')
-                        })
+                        if entry and entry.get('id'):
+                            # Construct URL from ID
+                            video_url = f"https://www.youtube.com/watch?v={entry['id']}"
+                            videos.append({
+                                'id': entry.get('id'),
+                                'title': entry.get('title', 'Unknown'),
+                                'duration': entry.get('duration', 0),
+                                'url': video_url,
+                                'description': entry.get('description', '')
+                            })
                 
                 return videos
                 
@@ -71,6 +74,10 @@ class DisasterVideoDownloader:
         """Download a single video"""
         
         try:
+            if not video_info.get('url'):
+                print(f"❌ No URL for video {video_info.get('id')}")
+                return None
+                
             with yt_dlp.YoutubeDL(self.ydl_opts) as ydl:
                 ydl.download([video_info['url']])
                 
@@ -84,7 +91,7 @@ class DisasterVideoDownloader:
                     return None
                     
         except Exception as e:
-            print(f"❌ Download failed: {e}")
+            print(f"❌ Download failed for {video_info.get('title', 'Unknown')[:30]}: {str(e)[:100]}")
             return None
     
     def build_dataset(self, videos_per_query: int = 5) -> List[Dict]:
