@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Singh"
+  given-names: "Kanavjeet"
+title: "Project A.E.G.I.S.: Autonomous Embedding-Guided Intelligence System"
+version: 1.0.0
+date-released: 2026-02-03
+url: "https://github.com/KanavjeetS/project-aegis"
+keywords:
+  - "computer vision"
+  - "disaster prediction"
+  - "v-jepa"
+  - "machine learning"
+  - "physics-aware ai"
+license: "MIT"

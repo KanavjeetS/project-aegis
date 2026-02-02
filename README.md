@@ -1,279 +1,120 @@
-# Project A.E.G.I.S.
-> **Autonomous Embedding-Guided Intelligence System**  
-> Multi-Modal V-JEPA Architecture for Predictive Planetary Resilience
+<div align="center">
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
-[![PyTorch 2.0+](https://img.shields.io/badge/PyTorch-2.0+-ee4c2c.svg)](https://pytorch.org/)
+# 🛡️ Project A.E.G.I.S.
+### Autonomous Embedding-Guided Intelligence System
 
-**A non-generative world model that predicts consequences, not pixels.**
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Python](https://img.shields.io/badge/python-3.8%2B-blue)
+![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-ee4c2c)
+![Docker](https://img.shields.io/badge/docker-ready-blue)
+![Status](https://img.shields.io/badge/status-production--ready-green)
 
----
+**Physics-Aware Computer Vision for Real-Time Disaster Prediction**
 
-## 🎯 What is A.E.G.I.S.?
+[🚀 Live Demo](https://huggingface.co/spaces/KanavjeetS/aegis-demo) | [📄 Documentation](docs/) | [🪲 Report Bug](https://github.com/KanavjeetS/project-aegis/issues)
 
-Unlike GPT-4 or Gemini which *generate* the next token, A.E.G.I.S. **predicts physical consequences** in latent space using Vision-JEPA. It doesn't draw floods—it understands fluid dynamics.
-
-### The Problem
-- Current AI models are **statistical mimics** without physical understanding
-- They predict pixels, not physics
-- Computationally expensive for real-time disaster prediction
-
-### Our Solution
-Three-module cognitive loop:
-1. **Observer** (V-JEPA) → Learns gravity, object permanence, fluid dynamics from video
-2. **Analyst** (Llama 3.1) → Translates physical states to semantic understanding
-3. **Guardian** (TD-MPC2) → Simulates 10,000 scenarios in latent space to find optimal actions
-
-**Result:** Physically accurate, computationally efficient, disaster-aware AI.
+</div>
 
 ---
 
-## 🚀 Quick Start (3 Commands)
+## 📖 Overview
 
-```bash
-# 1. Clone and setup
-git clone https://github.com/yourusername/project-aegis.git
-cd project-aegis
-pip install -r requirements.txt
+**A.E.G.I.S.** represents a paradigm shift in disaster management technology. Unlike traditional classification models that react to events, A.E.G.I.S. utilizes **Video Joint Embedding Predictive Architecture (V-JEPA)** to understand the temporal dynamics and physics of unfolding disasters.
 
-# 2. Download pre-trained checkpoint
-python scripts/download_checkpoints.py
+By combining self-supervised learning with a **Vision-Language Model (VLM)**, A.E.G.I.S. doesn't just detect floods or wildfires—it narrates the threat level in plain English, enabling instant, interpretable alerts from edge devices.
 
-# 3. Run inference demo
-python scripts/inference_vlm.py --video samples/flood.mp4
-# Output: "Water level rising rapidly. Structural stress detected in sector 4."
-```
+## ✨ Key Features
 
-**Colab Demo:** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/yourusername/project-aegis/blob/main/notebooks/01_quick_start.ipynb)
-
----
+| Feature | Description | Tech Stack |
+| :--- | :--- | :--- |
+| **🔮 Physics-Aware Prediction** | Understands causality and object permanence in video streams. | V-JEPA, ViT |
+| **🗣️ Natural Language Alerts** | Generates human-readable warnings (e.g., "Severe flooding detected"). | Llama 3.1, Q-Former |
+| **⚡ Edge-Optimized** | Runs on NVIDIA Jetson/RPi with INT8 quantization. | ONNX, TensorRT |
+| **🔄 Full Pipeline** | End-to-end handling from data ingestion to Kubernetes deployment. | FastAPI, Docker, K8s |
 
 ## 🏗️ Architecture
 
-```
-┌─────────────────────────────────────────────────────────┐
-│                   PROJECT A.E.G.I.S.                    │
-├─────────────────────────────────────────────────────────┤
-│                                                         │
-│  ┌──────────────┐      ┌──────────────┐               │
-│  │  OBSERVER    │      │  ANALYST     │               │
-│  │  V-JEPA ViT  │─────▶│  Llama 3.1   │               │
-│  │  (900M)      │      │  (8B, 4-bit) │               │
-│  └──────────────┘      └──────────────┘               │
-│         │                      │                        │
-│         └──────────┬───────────┘                        │
-│                    ▼                                    │
-│         ┌─────────────────────┐                        │
-│         │    GUARDIAN         │                        │
-│         │   TD-MPC2 (RL)      │                        │
-│         │ Latent Planning     │                        │
-│         └─────────────────────┘                        │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
+```mermaid
+graph TD
+    A[🎥 Video Feed] -->|Frames| B(V-JEPA Encoder)
+    B -->|Latent Embeddings| C{Predictor}
+    C -->|Future States| D[Physics-Aware Loss]
+    B -->|Visual Tokens| E[Q-Former]
+    E -->|Query| F[Llama 3.1 VLM]
+    F -->|Text Alert| G[📢 "Flood Levels Rising!"]
 ```
 
-### Key Features
-- ✅ **Non-Generative:** Predicts consequences, not pixels
-- ✅ **Self-Supervised:** Learns from raw video without labels
-- ✅ **Edge-Ready:** ONNX/TensorRT optimized (<200ms latency)
-- ✅ **Zero-Shot:** Understands disasters without specific training
+## 🚀 Quick Start
 
----
+### ☁️ Run in Colab (No Setup)
+The fastest way to try A.E.G.I.S. is via our Google Colab notebook, which includes a working demo and synthetic data generator.
 
-## 📊 Novel Contributions
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](notebooks/01_colab_quickstart.ipynb)
 
-### 1. Physics-Aware Temporal Loss
-Enforces causality constraints in latent embeddings—prevents physically impossible transitions.
+### 💻 Local Installation
 
-### 2. Zero-Shot Disaster Taxonomy
-CLIP-style contrastive learning between V-JEPA embeddings and disaster descriptions (no manual labels).
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/KanavjeetS/project-aegis.git
+   cd project-aegis
+   ```
 
-### 3. First Edge-Deployed V-JEPA
-ONNX export with TensorRT optimization for Jetson Nano / Raspberry Pi 5.
+2. **Install Dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-**Benchmarks:**
-| Model | Inference (ms) | VRAM (GB) | Device |
-|-------|----------------|-----------|--------|
-| GPT-4V | ~2000 | N/A (API) | Cloud |
-| BLIP-2 | 450 | 12 | RTX 3090 |
-| **A.E.G.I.S.** | **180** | **6** | **RTX 2060** |
+3. **Run the API & Demo**
+   ```bash
+   # Start the API
+   uvicorn api.api_server:app --reload
 
----
+   # Start the Web UI
+   python demo/gradio_app.py
+   ```
 
-## 📦 Installation
+## 📂 Project Structure
 
-### Prerequisites
-- Python 3.9+
-- CUDA 11.7+ (for GPU acceleration)
-- 40GB free disk space (datasets)
-
-### Option 1: Full Installation
 ```bash
-# Create environment
-conda create -n aegis python=3.9
-conda activate aegis
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Download datasets (optional, ~40GB)
-python scripts/download_datasets.py --datasets kinetics ego4d ladi
+project-aegis/
+├── 🧠 models/          # V-JEPA & VLM Model Architectures
+├── 🔌 api/             # Production FastAPI Server
+├── 🎮 demo/            # Gradio Web Interface
+├── 📦 deployment/      # Docker, K8s, & Quantization
+├── 📊 evaluation/      # Metrics (BLEU, METEOR, CIDEr)
+├── 💾 data/            # Synthetic Generators & Downloaders
+└── 📝 docs/            # Comprehensive Documentation
 ```
-
-### Option 2: Docker
-```bash
-docker pull yourusername/aegis:latest
-docker run -it --gpus all aegis:latest
-```
-
-### Option 3: Colab (Free Tier Compatible)
-Just open the notebook—no installation needed!
-
----
-
-## 🎓 Usage
-
-### 1. Embedding Extraction (Phase 1)
-```python
-from models.vjepa import VJEPAModel
-
-model = VJEPAModel.from_pretrained("checkpoints/vjepa_vitl16.pth")
-video = load_video("path/to/video.mp4")  # [B, T, C, H, W]
-embeddings = model.extract_embeddings(video)  # [B, T, 768]
-```
-
-### 2. Vision-Language Understanding (Phase 3)
-```python
-from models.vlm import AEGISModel
-
-model = AEGISModel.from_pretrained("checkpoints/aegis_vlm.pth")
-description = model.predict(video_path="disaster.mp4")
-# Output: "Flood water rising. Structural damage to building foundation."
-```
-
-### 3. Custom Fine-Tuning
-```bash
-python scripts/train_vlm.py \
-  --config configs/vlm_config.yaml \
-  --data_dir data/custom_dataset \
-  --output_dir checkpoints/custom
-```
-
----
 
 ## 📚 Documentation
 
-- [**Setup Guide**](docs/SETUP.md) → Installation and environment setup
-- [**Training Guide**](docs/TRAINING.md) → Fine-tuning on custom datasets
-- [**Deployment Guide**](docs/DEPLOYMENT.md) → Edge deployment (Jetson, Pi)
-- [**API Reference**](docs/API.md) → Complete API documentation
-- [**Paper Draft**](docs/PAPER_DRAFT.md) → Research writeup
-
----
-
-## 🧪 Datasets
-
-| Dataset | Size | Domain | Download |
-|---------|------|--------|----------|
-| Kinetics-400 | 20GB (subset) | General actions | [Link](https://github.com/cvdfoundation/kinetics-dataset) |
-| Ego4D | 10GB (subset) | First-person robotics | [Link](https://ego4d-data.org/) |
-| LADI | 5GB | Disaster imagery | [Link](https://github.com/LADI-Dataset/ladi-overview) |
-| MADOS | 2GB | Marine/ocean | [Link](https://github.com/gautamtata/MADOS) |
-
-**Total:** ~40GB (all free, existing datasets)
-
----
-
-## 🔬 Results
-
-### Qualitative Results
-*(Coming soon: Video demonstrations of disaster prediction)*
-
-### Quantitative Benchmarks
-*(Coming soon: Comparison with BLIP-2, GPT-4V)*
-
----
-
-## 🛠️ Development
-
-### Project Structure
-```
-project-aegis/
-├── models/           # Neural architectures
-│   ├── vjepa/       # V-JEPA implementation
-│   ├── vlm/         # Vision-Language Model
-│   └── rl/          # Reinforcement Learning
-├── data/            # Dataset loaders
-├── scripts/         # Training/inference scripts
-├── configs/         # Configuration files
-├── tests/           # Unit & integration tests
-└── docs/            # Documentation
-```
-
-### Running Tests
-```bash
-pytest tests/
-```
-
-### Code Quality
-```bash
-# Lint
-black . && isort . && flake8 .
-
-# Type check
-mypy models/ scripts/
-```
-
----
+- [**Installation Guide**](docs/SETUP.md): Detailed local and Docker setup.
+- [**Training Guide**](docs/TRAINING.md): How to train V-JEPA from scratch.
+- [**Deployment**](docs/DEPLOYMENT.md): Edge and Cloud deployment strategies.
+- [**API Reference**](docs/reports/ADVANCED_FEATURES.md): API endpoint documentation.
 
 ## 🤝 Contributing
 
-Contributions welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
-**Priority Areas:**
-- Additional disaster datasets
-- Edge optimization (mobile deployment)
-- RL agent training (Phase 4)
-- Benchmark comparisons
+## 📜 License
 
----
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 📖 Citation
+## ✍️ Citation
 
-If you use this work in your research, please cite:
+If you use A.E.G.I.S. in your research, please cite:
 
 ```bibtex
 @software{aegis2026,
-  title={Project A.E.G.I.S.: Multi-Modal V-JEPA for Disaster Prediction},
-  author={Your Name},
-  year={2026},
-  url={https://github.com/yourusername/project-aegis}
+  author = {Singh, Kanavjeet},
+  title = {A.E.G.I.S.: Autonomous Embedding-Guided Intelligence System},
+  year = {2026},
+  url = {https://github.com/KanavjeetS/project-aegis}
 }
 ```
 
 ---
-
-## 📜 License
-
-MIT License - see [LICENSE](LICENSE) for details.
-
----
-
-## 🙏 Acknowledgments
-
-- Meta FAIR for [V-JEPA](https://github.com/facebookresearch/jepa)
-- Hugging Face for [Transformers](https://github.com/huggingface/transformers)
-- Kinetics, Ego4D, LADI, MADOS dataset creators
-
----
-
-## 🔗 Links
-
-- **Paper:** [ArXiv](https://arxiv.org) (coming soon)
-- **Demo:** [YouTube](https://youtube.com) (coming soon)
-- **Discussions:** [GitHub Discussions](https://github.com/yourusername/project-aegis/discussions)
-
----
-
-**Built with ❤️ for planetary resilience**
+<div align="center">
+  <sub>Built with ❤️ for a Safer World by <a href="https://github.com/KanavjeetS">Kanavjeet Singh</a></sub>
+</div>
