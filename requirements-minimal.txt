@@ -1,0 +1,40 @@
+# Minimal Requirements for Core Functionality
+# This file excludes optional dependencies to save disk space
+
+# Core Dependencies
+torch>=2.0.1
+torchvision>=0.15.2
+
+# Video Processing (Essential)
+decord>=0.6.0
+opencv-python>=4.8.0
+
+# Transformers & LLM (Essential)
+transformers>=4.35.0
+accelerate>=0.24.0
+bitsandbytes>=0.41.0
+
+# Vision-Language
+timm>=0.9.10
+einops>=0.7.0
+
+# Training Utils (Lightweight)
+omegaconf>=2.3.0
+
+# Data & Utils
+numpy>=1.24.0
+pillow>=10.0.0
+tqdm>=4.66.0
+
+# NOTE: Optional packages excluded to save space:
+# - wandb, tensorboard (logging - can use print statements)
+# - submitit (distributed training - not needed for single GPU)
+# - gym, stable-baselines3 (RL Phase 4 - optional)
+# - pytest, black, isort, flake8, mypy (dev tools - install separately if needed)
+# - onnx, onnxruntime-gpu, tensorrt (deployment - install when deploying)
+# - av, peft, ftfy (nice-to-have)
+
+# To install optional packages later:
+# pip install wandb tensorboard  # For logging
+# pip install pytest black isort  # For development
+# pip install onnx onnxruntime-gpu  # For deployment
