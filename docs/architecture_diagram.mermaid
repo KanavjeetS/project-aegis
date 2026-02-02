@@ -1,0 +1,28 @@
+graph TD
+    subgraph "Edge Device / Input"
+        A[Video Feed 🎥] -->|Frames| B[Preprocessing]
+        B -->|Tensors| C{Deployment Mode}
+    end
+
+    subgraph "Core Architecture (A.E.G.I.S.)"
+        C -->|Server| D[FastAPI]
+        C -->|Edge| E[ONNX Runtime]
+        
+        D & E --> F[V-JEPA Encoder]
+        
+        F -->|Latent Embeddings| G[Predictor Head]
+        G -->|Future Embeddings| H[Physics-Aware Loss]
+        
+        F -->|Embeddings| I[Q-Former]
+        I -->|Visual Query| J[Llama 3.1 (Quantized)]
+    end
+
+    subgraph "Output & Alerts"
+        J -->|Text| K[Natural Language Alert]
+        K --> L[Dashboard / API]
+        K --> M[Emergency SMS]
+    end
+
+    style F fill:#f9f,stroke:#333
+    style J fill:#bbf,stroke:#333
+    style K fill:#dfd,stroke:#333

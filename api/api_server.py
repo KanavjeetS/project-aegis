@@ -39,12 +39,17 @@ class EvaluationRequest(BaseModel):
     references: List[str]
 
 
+from api.middleware import PrometheusMiddleware, REQUEST_COUNT
+
 # Initialize FastAPI
 app = FastAPI(
     title="Project A.E.G.I.S. API",
     description="Disaster prediction and video understanding API",
     version="1.0.0"
 )
+
+# Add Middleware
+app.add_middleware(PrometheusMiddleware)
 
 
 # Global model (loaded once)
