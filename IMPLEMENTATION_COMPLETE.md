@@ -49,6 +49,23 @@
 - `POST /evaluate` - Metric calculation
 - `GET /health` - Health check
 
+### 🛡️ **Tier 4: Production & Marketing** (COMPLETE)
+
+| Feature | File | Status |
+|---------|------|--------|
+| **Tests** | `tests/test_vlm_api.py` | ✅ Unit + Integration |
+| **Kubernetes** | `deployment/k8s/` | ✅ Manifests + HPA |
+| **Monitoring** | `api/middleware.py` | ✅ Prometheus |
+| **Blog Post** | `docs/BLOG_POST.md` | ✅ Tech Article |
+| **LinkedIn** | `docs/LINKEDIN_POST.md` | ✅ Social Content |
+| **Diagram** | `docs/architecture_diagram.mermaid` | ✅ Visuals |
+
+**New Capabilities:**
+- Automated testing for VLM and API
+- Scalable Kubernetes deployment with HPA
+- Real-time performance monitoring
+- Ready-to-share marketing materials
+
 ---
 
 ## 🎮 How to Use
